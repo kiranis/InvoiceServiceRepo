@@ -1,25 +1,25 @@
-# InvoiceService 🚀
+# InvoiceService
 A minimal .NET 8 Web API containerized with Docker and deployed to Kubernetes or OpenShift using GitHub Actions CI/CD.
 
 ---
 
-## 📦 Project Structure
+## Project Structure
 
 ```
 InvoiceService/
 ├── Controllers/
-│   └── InvoiceController.cs     # Basic Invoice GET endpoint
-├── Program.cs                   # Minimal API setup
-├── InvoiceService.csproj        # .NET project file
-├── Dockerfile                   # Container build instructions
-├── invoice-service.yaml         # Kubernetes/OpenShift manifest
+│   └── InvoiceController.cs
+├── Program.cs
+├── InvoiceService.csproj
+├── Dockerfile
+├── invoice-service.yaml
 └── .github/workflows/
-    └── deploy.yml               # GitHub Actions pipeline
+    └── deploy.yml
 ```
 
 ---
 
-## ⚙️ Tech Stack
+## Tech Stack
 
 - **.NET 8 (Minimal API)**
 - **Docker**
@@ -29,7 +29,7 @@ InvoiceService/
 
 ---
 
-## 🧪 API Demo
+## API Demo
 
 **GET** `/invoice`
 ```json
@@ -40,7 +40,7 @@ InvoiceService/
 
 ---
 
-## 🚀 Deployment Flow
+## Deployment Flow
 
 1. **Developer pushes code to `main`**
 2. GitHub Actions:
@@ -50,7 +50,7 @@ InvoiceService/
 
 ---
 
-## 🛠️ How to Run Locally
+## How to Run Locally
 
 ```bash
 # Build and run locally
@@ -66,7 +66,7 @@ docker run -p 8080:80 invoice-service
 
 ---
 
-## 📥 Secrets Required (in GitHub repo settings)
+## Secrets Required (in GitHub repo settings)
 
 - `ACR_USERNAME`
 - `ACR_PASSWORD`
@@ -75,7 +75,7 @@ These are used to authenticate and push Docker images to Azure Container Registr
 
 ---
 
-## 📚 Recruiter Note
+## Recruiter Note
 
 This repository demonstrates my ability to:
 - Write clean and container-ready .NET services
@@ -85,8 +85,8 @@ This repository demonstrates my ability to:
 
 ---
 
-## 📩 Contact
+## Contact
 
 **Anis Toauti**  
 Senior .NET Developer | Cloud & DevOps Enthusiast  
-[LinkedIn](https://www.linkedin.com/in/anis-toauti) | [GitHub](https://github.com/your-github) | Montréal, QC
+[LinkedIn](https://www.linkedin.com/in/anis-toauti) | [GitHub](https://github.com/kiranis) | Montréal, QC
