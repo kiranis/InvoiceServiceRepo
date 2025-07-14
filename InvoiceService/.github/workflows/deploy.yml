@@ -1,0 +1,48 @@
+name: Build & Deploy .NET InvoiceService
+
+on:
+  push:
+    branches: [main]
+
+env:
+  IMAGE_NAME: invoice-service
+  REGISTRY: yourregistry.azurecr.io
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Setup .NET 8 SDK
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 8.0.x
+
+    - name: Build & Publish
+      run: |
+        dotnet restore
+        dotnet publish -c Release -o out
+
+    - name: Login to Azure Container Registry
+      uses: azure/docker-login@v1
+      with:
+        login-server: ${{ env.REGISTRY }}
+        username: ${{ secrets.ACR_USERNAME }}
+        password: ${{ secrets.ACR_PASSWORD }}
+
+    - name: Build & Push Docker Image
+      run: |
+        docker build -t $REGISTRY/$IMAGE_NAME:latest .
+        docker push $REGISTRY/$IMAGE_NAME:latest
+
+    - name: Set up Kubectl
+      uses: azure/setup-kubectl@v3
+      with:
+        version: 'latest'
+
+    - name: Deploy to Kubernetes
+      run: |
+        kubectl apply -f invoice-service.yaml

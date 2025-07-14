@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: invoice-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: invoice-service
+  template:
+    metadata:
+      labels:
+        app: invoice-service
+    spec:
+      containers:
+      - name: invoice-service
+        image: yourregistry.azurecr.io/invoice-service:latest
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: invoice-service
+spec:
+  selector:
+    app: invoice-service
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
